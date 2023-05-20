@@ -1,12 +1,11 @@
 ﻿using BenchmarkDotNet.Running;
 
-namespace Practical.BenchmarkDotNet
+namespace Practical.BenchmarkDotNet;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var summary = BenchmarkRunner.Run<HashBenchmarks>();
-        }
+        var summary = BenchmarkRunner.Run<HashBenchmarks>();
     }
 }
