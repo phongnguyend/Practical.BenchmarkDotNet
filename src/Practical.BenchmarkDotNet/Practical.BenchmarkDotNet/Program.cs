@@ -6,6 +6,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var summary = BenchmarkRunner.Run<HashBenchmarks>();
+        //_ = BenchmarkRunner.Run<HashBenchmarks>();
+        _ = BenchmarkRunner.Run<LoopBenchmarks>();
     }
 }
