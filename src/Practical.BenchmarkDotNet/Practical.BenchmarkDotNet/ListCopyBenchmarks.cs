@@ -62,8 +62,14 @@ public class ListCopyBenchmarks
     }
 
     [Benchmark]
-    public void LINQ()
+    public void LinqSelectToList()
     {
         var newArray = _list.Select(x => x).ToList();
+    }
+
+    [Benchmark]
+    public void LinqToList()
+    {
+        var newArray = _list.ToList();
     }
 }

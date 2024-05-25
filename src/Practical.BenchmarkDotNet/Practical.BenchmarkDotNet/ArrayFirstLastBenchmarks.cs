@@ -3,7 +3,7 @@
 namespace Practical.BenchmarkDotNet;
 
 [MemoryDiagnoser]
-public class ArrayCopyBenchmarks
+public class ArrayFirstLastBenchmarks
 {
     private const int SIZE = 1_000_000;
     private readonly int[] _array = new int[SIZE];
@@ -20,33 +20,26 @@ public class ArrayCopyBenchmarks
     }
 
     [Benchmark]
-    public void Loop()
+    public void FirstUsingLinq()
     {
-        var newArray = new int[SIZE];
-
-        for (int i = 0; i < SIZE; i++)
-        {
-            newArray[i] = _array[i];
-        }
+        _ = _array.First();
     }
 
     [Benchmark]
-    public void ArrayCopy()
+    public void FirstUsingIndex()
     {
-        var newArray = new int[SIZE];
-
-        Array.Copy(_array, newArray, SIZE);
+        _ = _array[0];
     }
 
     [Benchmark]
-    public void LinqSelectToArray()
+    public void LastUsingLinq()
     {
-        var newArray = _array.Select(x => x).ToArray();
+        _ = _array.Last();
     }
 
     [Benchmark]
-    public void LinqToArray()
+    public void LastUsingIndex()
     {
-        var newArray = _array.ToArray();
+        _ = _array[_array.Length - 1];
     }
 }
