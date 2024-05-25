@@ -1,22 +1,21 @@
 ﻿using BenchmarkDotNet.Attributes;
-using System.Runtime.InteropServices;
 
 namespace Practical.BenchmarkDotNet;
 
 [MemoryDiagnoser]
-public class LoopBenchmarks
+public class ArrayLoopBenchmarks
 {
-    private readonly List<string> _list = new List<string>();
-    private readonly int _size = 1_000_000;
+    private const int SIZE = 1_000_000;
+    private readonly string[] _array = new string[SIZE];
 
     [GlobalSetup]
     public void Setup()
     {
         var random = new Random(2024);
 
-        for (int i = 0; i < _size; i++)
+        for (int i = 0; i < SIZE; i++)
         {
-            _list.Add(random.Next().ToString());
+            _array[i] = random.Next().ToString();
         }
     }
 
@@ -25,9 +24,9 @@ public class LoopBenchmarks
     {
         var result = string.Empty;
 
-        for (int i = 0; i < _size; i++)
+        for (int i = 0; i < SIZE; i++)
         {
-            result = _list[i];
+            result = _array[i];
         }
 
         return result;
@@ -38,7 +37,7 @@ public class LoopBenchmarks
     {
         var result = string.Empty;
 
-        foreach (var item in _list)
+        foreach (var item in _array)
         {
             result = item;
         }
@@ -47,11 +46,11 @@ public class LoopBenchmarks
     }
 
     [Benchmark]
-    public string ForEach()
+    public string ForEachMethod()
     {
         var result = string.Empty;
 
-        _list.ForEach(item => result = item);
+        Array.ForEach(_array, item => result = item);
 
         return result;
     }
@@ -62,9 +61,9 @@ public class LoopBenchmarks
         var result = string.Empty;
         var i = 0;
 
-        while (i < _size)
+        while (i < SIZE)
         {
-            result = _list[i];
+            result = _array[i];
             i++;
         }
 
@@ -79,10 +78,10 @@ public class LoopBenchmarks
 
         do
         {
-            result = _list[i];
+            result = _array[i];
             i++;
         }
-        while (i < _size);
+        while (i < SIZE);
 
         return result;
     }
@@ -94,9 +93,9 @@ public class LoopBenchmarks
         var i = 0;
 
         Start:
-        if (i < _size)
+        if (i < SIZE)
         {
-            result = _list[i];
+            result = _array[i];
             i++;
             goto Start;
         }
@@ -108,9 +107,9 @@ public class LoopBenchmarks
     public string Span()
     {
         var result = string.Empty;
-        var span = CollectionsMarshal.AsSpan(_list);
+        var span = _array.AsSpan();
 
-        for (int i = 0; i < _size; i++)
+        for (int i = 0; i < SIZE; i++)
         {
             result = span[i];
         }

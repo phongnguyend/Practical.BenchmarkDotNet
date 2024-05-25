@@ -2,10 +2,13 @@
 using Practical.BenchmarkDotNet;
 
 
-_ = BenchmarkRunner.Run<DictionaryBenmarks>();
+//_ = BenchmarkRunner.Run<ArrayCopyBenchmarks>();
+//_ = BenchmarkRunner.Run<ArrayLoopBenchmarks>();
+//_ = BenchmarkRunner.Run<DictionaryBenmarks>();
 //_ = BenchmarkRunner.Run<HashBenchmarks>();
 //_ = BenchmarkRunner.Run<JsonSerializerOptionsBenchmarks>();
-//_ = BenchmarkRunner.Run<LoopBenchmarks>();
+_ = BenchmarkRunner.Run<ListCopyBenchmarks>();
+//_ = BenchmarkRunner.Run<ListLoopBenchmarks>();
 //_ = BenchmarkRunner.Run<OrderBenchmarks>();
 //_ = BenchmarkRunner.Run<StopwatchBenchmarks>();
 //_ = BenchmarkRunner.Run<TryParseVsTryCatchParseBenchmarks>();
