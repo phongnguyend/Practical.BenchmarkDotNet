@@ -6,10 +6,9 @@ namespace Practical.BenchmarkDotNet;
 public class ListFirstLastBenchmarks
 {
     private const int SIZE = 1_000_000;
-    private readonly List<int> _list = new List<int>(SIZE);
+    private static readonly List<int> _list = new List<int>(SIZE);
 
-    [GlobalSetup]
-    public void Setup()
+    static ListFirstLastBenchmarks()
     {
         var random = new Random(2024);
 

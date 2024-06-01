@@ -6,10 +6,9 @@ namespace Practical.BenchmarkDotNet;
 public class ArrayCopyBenchmarks
 {
     private const int SIZE = 1_000_000;
-    private readonly int[] _array = new int[SIZE];
+    private static readonly int[] _array = new int[SIZE];
 
-    [GlobalSetup]
-    public void Setup()
+    static ArrayCopyBenchmarks()
     {
         var random = new Random(2024);
 

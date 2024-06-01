@@ -7,10 +7,9 @@ namespace Practical.BenchmarkDotNet;
 public class ListLoopBenchmarks
 {
     private const int SIZE = 1_000_000;
-    private readonly List<string> _list = new List<string>(SIZE);
+    private static readonly List<string> _list = new List<string>(SIZE);
 
-    [GlobalSetup]
-    public void Setup()
+    static ListLoopBenchmarks()
     {
         var random = new Random(2024);
 
@@ -23,11 +22,12 @@ public class ListLoopBenchmarks
     [Benchmark]
     public string For()
     {
+        var list = _list;
         var result = string.Empty;
 
-        for (int i = 0; i < SIZE; i++)
+        for (int i = 0; i < list.Count; i++)
         {
-            result = _list[i];
+            result = list[i];
         }
 
         return result;
@@ -36,9 +36,10 @@ public class ListLoopBenchmarks
     [Benchmark]
     public string Foreach()
     {
+        var list = _list;
         var result = string.Empty;
 
-        foreach (var item in _list)
+        foreach (var item in list)
         {
             result = item;
         }
@@ -49,9 +50,10 @@ public class ListLoopBenchmarks
     [Benchmark]
     public string ForEachMethod()
     {
+        var list = _list;
         var result = string.Empty;
 
-        _list.ForEach(item => result = item);
+        list.ForEach(item => result = item);
 
         return result;
     }
@@ -59,12 +61,13 @@ public class ListLoopBenchmarks
     [Benchmark]
     public string While()
     {
+        var list = _list;
         var result = string.Empty;
         var i = 0;
 
-        while (i < SIZE)
+        while (i < list.Count)
         {
-            result = _list[i];
+            result = list[i];
             i++;
         }
 
@@ -74,15 +77,16 @@ public class ListLoopBenchmarks
     [Benchmark]
     public string DoWhile()
     {
+        var list = _list;
         var result = string.Empty;
         var i = 0;
 
         do
         {
-            result = _list[i];
+            result = list[i];
             i++;
         }
-        while (i < SIZE);
+        while (i < list.Count);
 
         return result;
     }
@@ -90,13 +94,14 @@ public class ListLoopBenchmarks
     [Benchmark]
     public string GoTo()
     {
+        var list = _list;
         var result = string.Empty;
         var i = 0;
 
         Start:
-        if (i < SIZE)
+        if (i < list.Count)
         {
-            result = _list[i];
+            result = list[i];
             i++;
             goto Start;
         }
@@ -110,7 +115,7 @@ public class ListLoopBenchmarks
         var result = string.Empty;
         var span = CollectionsMarshal.AsSpan(_list);
 
-        for (int i = 0; i < SIZE; i++)
+        for (int i = 0; i < span.Length; i++)
         {
             result = span[i];
         }

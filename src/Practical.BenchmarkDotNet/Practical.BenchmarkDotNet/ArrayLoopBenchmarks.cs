@@ -6,10 +6,9 @@ namespace Practical.BenchmarkDotNet;
 public class ArrayLoopBenchmarks
 {
     private const int SIZE = 1_000_000;
-    private readonly string[] _array = new string[SIZE];
+    private static readonly string[] _array = new string[SIZE];
 
-    [GlobalSetup]
-    public void Setup()
+    static ArrayLoopBenchmarks()
     {
         var random = new Random(2024);
 
@@ -22,11 +21,12 @@ public class ArrayLoopBenchmarks
     [Benchmark]
     public string For()
     {
+        var array = _array;
         var result = string.Empty;
 
-        for (int i = 0; i < SIZE; i++)
+        for (int i = 0; i < array.Length; i++)
         {
-            result = _array[i];
+            result = array[i];
         }
 
         return result;
@@ -35,9 +35,10 @@ public class ArrayLoopBenchmarks
     [Benchmark]
     public string Foreach()
     {
+        var array = _array;
         var result = string.Empty;
 
-        foreach (var item in _array)
+        foreach (var item in array)
         {
             result = item;
         }
@@ -48,9 +49,10 @@ public class ArrayLoopBenchmarks
     [Benchmark]
     public string ForEachMethod()
     {
+        var array = _array;
         var result = string.Empty;
 
-        Array.ForEach(_array, item => result = item);
+        Array.ForEach(array, item => result = item);
 
         return result;
     }
@@ -58,12 +60,13 @@ public class ArrayLoopBenchmarks
     [Benchmark]
     public string While()
     {
+        var array = _array;
         var result = string.Empty;
         var i = 0;
 
-        while (i < SIZE)
+        while (i < array.Length)
         {
-            result = _array[i];
+            result = array[i];
             i++;
         }
 
@@ -73,15 +76,16 @@ public class ArrayLoopBenchmarks
     [Benchmark]
     public string DoWhile()
     {
+        var array = _array;
         var result = string.Empty;
         var i = 0;
 
         do
         {
-            result = _array[i];
+            result = array[i];
             i++;
         }
-        while (i < SIZE);
+        while (i < array.Length);
 
         return result;
     }
@@ -89,13 +93,14 @@ public class ArrayLoopBenchmarks
     [Benchmark]
     public string GoTo()
     {
+        var array = _array;
         var result = string.Empty;
         var i = 0;
 
-        Start:
-        if (i < SIZE)
+    Start:
+        if (i < array.Length)
         {
-            result = _array[i];
+            result = array[i];
             i++;
             goto Start;
         }
@@ -109,7 +114,7 @@ public class ArrayLoopBenchmarks
         var result = string.Empty;
         var span = _array.AsSpan();
 
-        for (int i = 0; i < SIZE; i++)
+        for (int i = 0; i < span.Length; i++)
         {
             result = span[i];
         }
