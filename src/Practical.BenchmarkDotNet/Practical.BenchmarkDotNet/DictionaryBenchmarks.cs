@@ -3,7 +3,7 @@
 namespace Practical.BenchmarkDotNet;
 
 [MemoryDiagnoser]
-public class DictionaryBenmarks
+public class DictionaryBenchmarks
 {
     [Params("123", "abc")]
     public string Input { get; set; }
