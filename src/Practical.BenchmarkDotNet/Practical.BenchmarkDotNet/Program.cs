@@ -1,7 +1,7 @@
 ﻿using BenchmarkDotNet.Running;
 using Practical.BenchmarkDotNet;
 
-
+_ = BenchmarkRunner.Run<ArrayBoundsCheckBenchmarks>();
 //_ = BenchmarkRunner.Run<ArrayCopyBenchmarks>();
 //_ = BenchmarkRunner.Run<ArrayFirstLastBenchmarks>();
 //_ = BenchmarkRunner.Run<ArrayLoopBenchmarks>();
@@ -11,7 +11,7 @@ using Practical.BenchmarkDotNet;
 //_ = BenchmarkRunner.Run<DictionaryLoopBenchmarks>();
 //_ = BenchmarkRunner.Run<FrozenDictionaryBenchmarks>();
 //_ = BenchmarkRunner.Run<HashBenchmarks>();
-_ = BenchmarkRunner.Run<JsonDeserializeBenchmarks>();
+//_ = BenchmarkRunner.Run<JsonDeserializeBenchmarks>();
 //_ = BenchmarkRunner.Run<JsonSerializerOptionsBenchmarks>();
 //_ = BenchmarkRunner.Run<ListCopyBenchmarks>();
 //_ = BenchmarkRunner.Run<ListFirstLastBenchmarks>();
