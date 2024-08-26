@@ -6,6 +6,7 @@ _ = BenchmarkRunner.Run<ArrayBoundsCheckBenchmarks>();
 //_ = BenchmarkRunner.Run<ArrayFirstLastBenchmarks>();
 //_ = BenchmarkRunner.Run<ArrayLoopBenchmarks>();
 //_ = BenchmarkRunner.Run<ArraySizeBenchmarks>();
+//_ = BenchmarkRunner.Run<CheckAlphanumericBenchmarks>();
 //_ = BenchmarkRunner.Run<DictionaryBenchmarks>();
 //_ = BenchmarkRunner.Run<DictionaryLookupVsPatternMatchingBenchmarks>();
 //_ = BenchmarkRunner.Run<DictionaryLoopBenchmarks>();
