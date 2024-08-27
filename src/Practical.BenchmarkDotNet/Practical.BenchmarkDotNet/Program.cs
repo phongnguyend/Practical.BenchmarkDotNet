@@ -22,6 +22,7 @@ _ = BenchmarkRunner.Run<ArrayBoundsCheckBenchmarks>();
 //_ = BenchmarkRunner.Run<ReflectionMethodBenchmarks>();
 //_ = BenchmarkRunner.Run<ReflectionPropertyBenchmarks>();
 //_ = BenchmarkRunner.Run<ReflectionVsUnsafeAccessorBenchmarks>();
+//_ = BenchmarkRunner.Run<RegexBenchmarks>();
 //_ = BenchmarkRunner.Run<StopwatchBenchmarks>();
 //_ = BenchmarkRunner.Run<StringContainsBenchmarks>();
 //_ = BenchmarkRunner.Run<StringEndsWithBenchmarks>();
