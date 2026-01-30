@@ -1,13 +1,24 @@
 ﻿using BenchmarkDotNet.Running;
 using Practical.BenchmarkDotNet;
 
-_ = BenchmarkRunner.Run<ArrayBoundsCheckBenchmarks>();
+
+//var x = new CheckAlphanumericBenchmarks();
+//x.Input = "";
+//Console.WriteLine(x.IsLetterOrDigit());
+//Console.WriteLine(x.Regex());
+//Console.WriteLine(x.CachedRegex());
+//Console.WriteLine(x.GeneratedRegex());
+//return;
+
+//_ = BenchmarkRunner.Run<ArrayBoundsCheckBenchmarks>();
 //_ = BenchmarkRunner.Run<ArrayCopyBenchmarks>();
 //_ = BenchmarkRunner.Run<ArrayFirstLastBenchmarks>();
 //_ = BenchmarkRunner.Run<ArrayLoopBenchmarks>();
+//_ = BenchmarkRunner.Run<ArrayOrderBenchmarks2>();
 //_ = BenchmarkRunner.Run<ArraySizeBenchmarks>();
 //_ = BenchmarkRunner.Run<CheckAlphanumericBenchmarks>();
 //_ = BenchmarkRunner.Run<DictionaryBenchmarks>();
+_ = BenchmarkRunner.Run<DictionaryKeyLookupBenchmarks>();
 //_ = BenchmarkRunner.Run<DictionaryLookupVsPatternMatchingBenchmarks>();
 //_ = BenchmarkRunner.Run<DictionaryLoopBenchmarks>();
 //_ = BenchmarkRunner.Run<FrozenDictionaryBenchmarks>();
@@ -17,8 +28,8 @@ _ = BenchmarkRunner.Run<ArrayBoundsCheckBenchmarks>();
 //_ = BenchmarkRunner.Run<ListCopyBenchmarks>();
 //_ = BenchmarkRunner.Run<ListFirstLastBenchmarks>();
 //_ = BenchmarkRunner.Run<ListLoopBenchmarks>();
+//_ = BenchmarkRunner.Run<ListOrderBenchmarks>();
 //_ = BenchmarkRunner.Run<ListSizeBenchmarks>();
-//_ = BenchmarkRunner.Run<OrderBenchmarks>();
 //_ = BenchmarkRunner.Run<ReflectionMethodBenchmarks>();
 //_ = BenchmarkRunner.Run<ReflectionPropertyBenchmarks>();
 //_ = BenchmarkRunner.Run<ReflectionVsUnsafeAccessorBenchmarks>();

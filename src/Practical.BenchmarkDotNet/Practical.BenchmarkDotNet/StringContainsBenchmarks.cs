@@ -19,4 +19,10 @@ public class StringContainsBenchmarks
     {
         Input.Contains('/');
     }
+
+    [Benchmark]
+    public void Span()
+    {
+        Input.AsSpan().Contains('/');
+    }
 }
